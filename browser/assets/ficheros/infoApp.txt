@@ -1,3 +1,0 @@
-Fantasia,Suspense,Documental,Comedia,Drama,Ciencia ficcion,Romance,Terror,Aventura,Crimen,Isekai,Slice of Life,Historico,Superheroes,Supervivencia,Psicologico,Escolar,Artes marciales,Ciencia,Politico,Mecha,NSFW,Musica,Deportes,Comedia Romantica,Medico,Realidad virtual,Cocina,Drogas
-Netflix,AnimeFLV,Unknown,Prime Video,Cine,YouTube,HBO,Disney+,Crunchyroll,GTA V,Movistar+,Fisico,Por estrenar
-Pelicula,Anime,Serie,Documental,Corto,Manga
