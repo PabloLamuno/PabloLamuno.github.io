@@ -1,0 +1,85 @@
+<div class="container" *ngIf="verMultimedias; else vistas">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+    <div class="col mt-4" *ngFor="let multimedia of multimediasMultimedia">
+      <div class="mx-2">
+        <div class="card border-dark">
+          <div class="card-header justify-content-between align-items-center">
+            <span class="badge rounded-pill textoInvisible float-end" [ngClass]="verificarEstado(multimedia)">.</span>
+            {{multimedia.nombre}}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-wrap">{{multimedia.estado}}</h5>
+            <p class="card-text">{{multimedia.genero}}</p>
+          </div>
+
+          <div class="card-footer d-flex flex-wrap justify-content-start align-items-center">
+            <button class="btn btn-primary my-1 mx-1">
+              <img src="assets/imagenes/logos/multimedias/verTarde.svg" alt="Ver" class="mx-1">
+            </button>
+            <button class="btn btn-primary my-1 mx-1">
+              <img src="assets/imagenes/logos/multimedias/viendo.svg" alt="Ver" class="mx-1">
+            </button>
+            <button class="btn btn-primary my-1 mx-1">
+              <img src="assets/imagenes/logos/multimedias/vista.svg" alt="Ver" class="mx-1">
+            </button>
+            <button class="btn btn-danger my-1 mx-1">
+              <img src="assets/imagenes/logos/multimedias/eliminar.svg" alt="Ver" class="mx-1">
+            </button>
+            <button class="btn btn-primary my-1 mx-1">
+              <img src="assets/imagenes/logos/multimedias/compartir.svg" alt="Ver" class="mx-1">
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #vistas>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+      <div class="col mt-4" *ngFor="let multimedia of multimediasVista">
+        <div class="mx-2">
+          <div class="card border-dark">
+            <div class="card-header justify-content-between align-items-center">
+              <span class="badge rounded-pill textoInvisible float-end" [ngClass]="verificarEstado(multimedia)">.</span>
+              {{multimedia.nombre}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-wrap">{{multimedia.genero}}</h5>
+              <p class="card-text">{{multimedia.estado}}</p>
+              <!-- Campo de nota -->
+              <p class="card-text"><strong>Nota:</strong> {{multimedia.nota}}</p>
+              <!-- Campo de fecha de acabado -->
+              <p class="card-text"><strong>Fecha de acabado:</strong>
+                {{formatDate(multimedia.fechaAcabado)}}</p>
+            </div>
+
+            <div class="card-footer d-flex flex-wrap justify-content-start align-items-center">
+              <button class="btn btn-primary my-1 mx-1">
+                <img src="assets/imagenes/logos/multimedias/verTarde.svg" alt="Ver" class="mx-1">
+              </button>
+              <button class="btn btn-primary my-1 mx-1">
+                <img src="assets/imagenes/logos/multimedias/viendo.svg" alt="Ver" class="mx-1">
+              </button>
+              <button class="btn btn-primary my-1 mx-1">
+                <img src="assets/imagenes/logos/multimedias/vista.svg" alt="Ver" class="mx-1">
+              </button>
+              <button class="btn btn-danger my-1 mx-1">
+                <img src="assets/imagenes/logos/multimedias/eliminar.svg" alt="Ver" class="mx-1">
+              </button>
+              <button class="btn btn-primary my-1 mx-1">
+                <img src="assets/imagenes/logos/multimedias/compartir.svg" alt="Ver" class="mx-1">
+              </button>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

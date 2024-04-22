@@ -1,0 +1,153 @@
+<div class="row px-4 filtro-container">
+    <button class="btn btn-primary mt-3" (click)="menuFiltrar = !menuFiltrar">Filtrar</button>
+    <div *ngIf="!menuFiltrar;else menuFiltrarDiv"></div>
+    <button class="btn btn-primary mt-3" (click)="menuOrdenar = !menuOrdenar">Ordenar</button>
+    <div *ngIf="!menuOrdenar;else menuOrdenarDiv"></div>
+
+    <!-- Menú de filtrar -->
+    <ng-template class="d-flex row" #menuFiltrarDiv>
+        <!-- Nombre -->
+        <div class="col-3">
+            <div class="filtro-content">
+                <label for="nombreFiltro" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombreFiltro" placeholder="Ingrese el nombre"
+                    (keyup)="filtrar()" [(ngModel)]="nombreF" #filtroNombre>
+            </div>
+        </div>
+
+        <!-- Tipo -->
+        <div class="col-auto">
+            <div class="filtro-content">
+                <label for="tipoFiltro" class="form-label">Tipo</label>
+                <select class="form-select" id="tipoFiltro" #filtroTipo [(ngModel)]="tipoF" (change)="filtrar()">
+                    <option value="Todos" selected>Todos</option>
+                    <option [value]="tipo" *ngFor="let tipo of tipos">{{tipo}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Género -->
+        <div class="col-auto ">
+            <div class="filtro-content">
+                <label for="generoFiltro" class="form-label">Género</label>
+                <select class="form-select" id="generoFiltro" #filtroGenero [(ngModel)]="generoF" (change)="filtrar()">
+                    <option value="Todos" selected>Todos</option>
+                    <option [value]="genero" *ngFor="let genero of generos">{{genero}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Plataforma -->
+        <div class="col-auto ">
+            <div class="filtro-content">
+                <label for="plataformaFiltro" class="form-label">Plataforma</label>
+                <select class="form-select" id="plataformaFiltro" #filtroPlataforma [(ngModel)]="plataformaF"
+                    (change)="filtrar()">
+                    <option value="Todas" selected>Todas</option>
+                    <option [value]="plataforma" *ngFor="let plataforma of plataformas">{{plataforma}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Estado -->
+        <div class="col-auto ">
+            <div class="filtro-content">
+                <label for="estadoFiltro" class="form-label">Estado</label>
+                <select class="form-select" id="estadoFiltro" #filtroEstado [(ngModel)]="estadoF" (change)="filtrar()">
+                    <option value="Todos" selected>Todos</option>
+                    <option [value]="estado" *ngFor="let estado of estados">{{estado}}</option>
+                </select>
+            </div>
+        </div>
+        <ng-container *ngIf="!verMultimedias">
+            <!-- Nota -->
+            <div class="col-auto ">
+                <div class="filtro-content d-flex flex-wrap">
+                    <div class="me-3">
+                        <label for="notaFiltro" class="form-label">Por nota</label>
+                        <select type="text" class="form-select" #filtroNotaModo
+                            (change)="filtroMultiple(filtroNotaModo.value,'nota')">
+                            <option value="eq">Igual</option>
+                            <option value="gt">Mayor</option>
+                            <option value="lt">Menor</option>
+                            <option value="bt">Entre</option>
+                        </select>
+                    </div>
+                    <div class="me-3">
+                        <label for="notaFiltro" class="form-label">Nota</label>
+                        <input type="number" class="form-control" id="notaFiltro" placeholder="5,0" [(ngModel)]="notaF1"
+                            (keyup)="filtrar()">
+                    </div>
+                </div>
+                <div class="filtro-content" *ngIf="variasNotas">
+                    <label for="limiteNota" class="form-label">Hasta</label>
+                    <input type="number" class="form-control" id="limiteNota" placeholder="5,0" #filtroNota2
+                        [(ngModel)]="notaF2" (keyup)="filtrar()">
+                </div>
+            </div>
+
+            <!-- Fecha -->
+            <div class="col-md-auto ">
+                <div class="filtro-content d-flex flex-wrap">
+                    <div class="me-3">
+                        <label for="fechaFiltro" class="form-label">Fecha</label>
+                        <select class="form-select" id="fechaFiltro" #filtroFechaModo
+                            (change)="filtroMultiple(filtroFechaModo.value,'fecha')">
+                            <option value="eq">Igual</option>
+                            <option value="gt">Después</option>
+                            <option value="lt">Antes</option>
+                            <option value="bt">Entre</option>
+                        </select>
+                    </div>
+                    <div class="me-3">
+                        <label for="limiteFecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="limiteFecha" #filtroFecha1 [(ngModel)]="fechaF1"
+                            (change)="filtrar()">
+
+                    </div>
+                </div>
+                <div class="filtro-content" *ngIf="variasFechas">
+                    <label for="limiteFecha2" class="form-label">Hasta</label>
+                    <input type="date" class="form-control" id="limiteFecha2" #filtroFecha2 [(ngModel)]="fechaF2"
+                        (change)="filtrar()">
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Botón para borrar el filtro -->
+        <div class="col-auto ">
+            <div class="filtro-content">
+                <p class="form-label textoInvisible">.</p>
+                <button class="btn btn-danger" id="bt" (click)="borrarFiltro()">Resetear</button>
+            </div>
+        </div>
+        
+    </ng-template>
+
+    <!-- Menú de ordenar -->
+    <ng-template class="d-flex mt3 row" #menuOrdenarDiv>
+        <hr>
+        <ng-container *ngFor="let filtrado of vOrdenar; let i = index">
+            <div class="col-auto d-flex align-items-center">
+                <div class="select-container">
+                    <select [(ngModel)]="ordenarArray[i]" class="form-select" (change)="ordenar()">
+                        <option>Seleccionar</option>
+                        <option *ngFor="let value of vOrdenar" [value]="value">{{value}}</option>
+                    </select>
+                </div>
+                <div class="checkbox-container ms-2">
+                    <input type="checkbox" id="ascCheckbox{{i}}" name="ascCheckbox{{i}}" class="form-check-input"
+                        [(ngModel)]="ascendente[i]" (change)="ordenar()">
+                    <label for="ascCheckbox{{i}}" class="form-check-label">Desc</label>
+                </div>
+
+                <div class="checkbox-container ms-2" *ngIf="i !==vOrdenar.length-1">
+                    >
+                </div>
+            </div>
+        </ng-container>
+        <div class="col-auto align-self-center">
+            <button class="btn btn-danger" id="bt" (click)="borrarOrdenar()">Resetear</button>
+        </div>
+    </ng-template>
+</div>

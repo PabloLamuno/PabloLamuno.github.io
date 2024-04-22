@@ -1,0 +1,64 @@
+<!-- FILEPATH: /C:/Users/Pablo/Desktop/appMultimedias/appMultimediasAngular/AppMultimediasAngular/src/app/components/nav-bar/nav-bar.component.html -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <!-- Logo, being the link to the home -->
+    <a href="#">
+      <img src="assets/imagenes/urnhinkoo/logoSolo.svg" alt="Logo" height="75" href="#">
+    </a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+    <!-- Mis multimedias, being a dropdown to the views and those that are watching/watch later -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Mis Multimedias
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#"routerLink="verMasTarde" routerLinkActive="active">Ver mas tarde</a></li>
+          <li><a class="dropdown-item" href="#"routerLink="viendo" routerLinkActive="active">Viendo</a></li>
+          <li><a class="dropdown-item" href="#" routerLink="vistos" routerLinkActive="active" >Vistos</a></li>
+        </ul>
+      </li>
+
+      <!-- Recomendaciones, with the ones made and received -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Recomendaciones
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Recomendaciones Recibidas</a></li>
+          <li><a class="dropdown-item" href="#">Recomendaciones Enviadas</a></li>
+          <li><a class="dropdown-item" href="#">Recomendar a un amigo</a></li>
+        </ul>
+      </li>
+
+      <!-- Explorar, to search new multimedias -->
+      <li class="nav-item">
+        <a class="nav-link" href="#">Explorar</a>
+      </li>
+
+      <!-- Recomendaciones, with the ones made and received -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Amigos
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Amigos</a></li>
+          <li><a class="dropdown-item" href="#">Añadir un amigo</a></li>
+          <li><a class="dropdown-item" href="#">Solicitudes de amistad</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!--Aqui luego estara la foto de perfil-->
+    <div class="d-flex">
+      <!-- <img class="rounded-circle" alt="avatar1" src="assets/imagenes/shiba2.jpg" height="75"/>  -->
+      <button class="btn btn-outline-light mx-1" type="button" (click)="reiniciarDatos()">Reiniciar Datos</button>
+      <button class="btn btn-outline-light mx-1" type="button" (click)="actualizarUsados()">Actualizar Usados</button>
+      <button class="btn btn-outline-light mx-1" type="button" routerLink="perfil" routerLinkActive="active">Mi perfil</button>
+      <button class="btn btn-outline-light mx-1" type="button">Cerrar sesion</button>
+    </div>
+
+
+
+  </div>
+</nav>
